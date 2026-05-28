@@ -240,8 +240,23 @@ body.theme-luka .visitor-card-title {
 }
 
 body.theme-luka .visitor-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   font-size: 13px;
   line-height: 1.6;
+}
+
+body.theme-luka .visitor-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+body.theme-luka .visitor-stat i {
+  width: 16px;
+  text-align: center;
+  color: var(--luka-accent);
 }
 
 body.theme-luka .content {

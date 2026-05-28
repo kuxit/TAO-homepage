@@ -53,6 +53,20 @@
           <a href="https://orcid.org/0009-0008-8879-9131" title="ORCID"><i class="ai ai-orcid"></i></a>
           <a href="https://github.com/kuxit" title="GitHub"><i class="fa-brands fa-github"></i></a>
         </div>
+
+        <div class="visitor-card">
+          <div class="visitor-card-title">Visitors</div>
+          <div class="visitor-card-body" id="busuanzi_container_site" style="display:none;">
+            <span class="visitor-stat">
+              <i class="fa-solid fa-eye"></i>
+              <span id="busuanzi_value_site_pv">0</span> views
+            </span>
+            <span class="visitor-stat">
+              <i class="fa-solid fa-user"></i>
+              <span id="busuanzi_value_site_uv">0</span> visitors
+            </span>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -186,6 +200,23 @@
   </div>
 
   <script src="assets/js/scale.fix.js"></script>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script>
+    (function() {
+      const container = document.getElementById('busuanzi_container_site');
+      const pv = document.getElementById('busuanzi_value_site_pv');
+      if (!container || !pv) return;
+      let tries = 0;
+      const timer = setInterval(function() {
+        if (pv.textContent && pv.textContent !== '0') {
+          container.style.display = '';
+          clearInterval(timer);
+        } else if (++tries > 20) {
+          clearInterval(timer);
+        }
+      }, 300);
+    })();
+  </script>
   <script>
     (function() {
       const themeToggle = document.getElementById('themeToggle');
