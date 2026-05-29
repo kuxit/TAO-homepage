@@ -2,7 +2,7 @@
 
 欢迎来到我的个人主页！🌟
 
-🔗 **在线访问：** https://kuxit.github.io/TaoXie.github.io/
+🔗 **在线访问：** https://kuxit.github.io/TAO-homepage/
 
 这里展示我的研究方向、论文、经历与所获奖项。
 
