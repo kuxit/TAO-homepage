@@ -172,8 +172,8 @@ body.theme-luka .image.avatar {
 }
 
 body.theme-luka .image.avatar img {
-  width: 220px;
-  height: 220px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 6px 24px var(--luka-shadow);
