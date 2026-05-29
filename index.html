@@ -77,11 +77,30 @@
 
     <section class="content">
       <div class="section" id="about">
-        <h2 class="section-title">About Me</h2>
+        <div class="about-head">
+          <h2 class="section-title">About Me</h2>
+          <div class="lang-switch" role="group" aria-label="About Me language">
+            <button type="button" class="lang-btn is-active" data-lang="en">EN</button>
+            <button type="button" class="lang-btn" data-lang="hans" lang="zh-Hans">简</button>
+            <button type="button" class="lang-btn" data-lang="hant" lang="zh-Hant">繁</button>
+          </div>
+        </div>
         <div class="section-body">
-          <p>Hello! I am <strong>Tao Xie (谢涛)</strong>, a third-year B.S. student in the Outstanding Engineer Class of Automation at <a href="https://www.gdut.edu.cn/" target="_blank" rel="noopener">Guangdong University of Technology</a>, advised by <strong>Prof. Yiqun Zhang</strong>. I conduct research in the SIGMTA group at the OMG Lab.</p>
-          <p>My research focuses on <strong>time series machine learning</strong>, encompassing supervised classification, anomaly detection, forecasting, representation learning, as well as unsupervised pattern discovery and clustering. Application domains include medical sepsis classification and industrial detection. Related works have been published in international conferences such as <strong>KDD</strong>, BIBM, and PRICAI.</p>
-          <p><strong><a href="assets/cv/CV.pdf" target="_blank" rel="noopener">Download my CV</a></strong></p>
+          <div class="about-lang is-active" data-lang="en" lang="en">
+            <p>Hello! I am <strong>Tao Xie (谢涛)</strong>, a third-year B.S. student in the Outstanding Engineer Class of Automation at <a href="https://www.gdut.edu.cn/" target="_blank" rel="noopener">Guangdong University of Technology</a>, advised by <strong>Prof. Yiqun Zhang</strong>. I conduct research in the SIGMTA group at the OMG Lab.</p>
+            <p>My research focuses on <strong>time series machine learning</strong>, encompassing supervised classification, anomaly detection, forecasting, representation learning, as well as unsupervised pattern discovery and clustering. Application domains include medical sepsis classification and industrial detection. Related works have been published in international conferences such as <strong>KDD</strong>, BIBM, and PRICAI.</p>
+            <p><strong><a href="assets/cv/CV.pdf" target="_blank" rel="noopener">Download my CV</a></strong></p>
+          </div>
+          <div class="about-lang" data-lang="hans" lang="zh-Hans">
+            <p>你好！我是<strong>谢涛</strong>，<a href="https://www.gdut.edu.cn/" target="_blank" rel="noopener">广东工业大学</a>自动化卓越工程师班三年级本科生，师从<strong>张逸群</strong>教授，在 OMG 实验室 SIGMTA 课题组开展研究。</p>
+            <p>我的研究聚焦于<strong>时间序列机器学习</strong>，涵盖有监督分类、异常检测、预测与表示学习，以及无监督的模式发现与聚类。应用领域包括医疗脓毒症分类与工业检测。相关成果已发表于 <strong>KDD</strong>、BIBM、PRICAI 等国际会议。</p>
+            <p><strong><a href="assets/cv/CV.pdf" target="_blank" rel="noopener">下载我的简历</a></strong></p>
+          </div>
+          <div class="about-lang" data-lang="hant" lang="zh-Hant">
+            <p>你好！我是<strong>謝濤</strong>，<a href="https://www.gdut.edu.cn/" target="_blank" rel="noopener">廣東工業大學</a>自動化卓越工程師班三年級本科生，師從<strong>張逸群</strong>教授，在 OMG 實驗室 SIGMTA 課題組開展研究。</p>
+            <p>我的研究聚焦於<strong>時間序列機器學習</strong>，涵蓋有監督分類、異常檢測、預測與表示學習，以及無監督的模式發現與聚類。應用領域包括醫療膿毒症分類與工業檢測。相關成果已發表於 <strong>KDD</strong>、BIBM、PRICAI 等國際會議。</p>
+            <p><strong><a href="assets/cv/CV.pdf" target="_blank" rel="noopener">下載我的簡歷</a></strong></p>
+          </div>
         </div>
       </div>
 
@@ -260,6 +279,35 @@
           el.classList.add('visible');
         });
       }
+    })();
+
+    (function() {
+      const buttons = document.querySelectorAll('.lang-switch .lang-btn');
+      const blocks = document.querySelectorAll('.about-lang');
+      if (!buttons.length || !blocks.length) return;
+
+      function apply(lang) {
+        let matched = false;
+        blocks.forEach(function(b) {
+          const on = b.getAttribute('data-lang') === lang;
+          b.classList.toggle('is-active', on);
+          if (on) matched = true;
+        });
+        if (!matched) return;
+        buttons.forEach(function(btn) {
+          btn.classList.toggle('is-active', btn.getAttribute('data-lang') === lang);
+        });
+        localStorage.setItem('aboutLang', lang);
+      }
+
+      const saved = localStorage.getItem('aboutLang');
+      if (saved) apply(saved);
+
+      buttons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          apply(btn.getAttribute('data-lang'));
+        });
+      });
     })();
   </script>
 </body>
