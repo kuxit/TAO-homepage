@@ -418,6 +418,25 @@ body.theme-luka .institution-logo {
   object-fit: contain;
 }
 
+/* Dark mode: logos are dark artwork on transparent bg, so they blend into
+   the dark page. Give them a white rounded chip so they stay legible.
+   Light mode is left untouched. */
+[data-theme="dark"] body.theme-luka .institution-logo {
+  background: #fff;
+  padding: 4px;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) body.theme-luka .institution-logo {
+    background: #fff;
+    padding: 4px;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  }
+}
+
 body.theme-luka .experience-content {
   flex: 1;
 }
