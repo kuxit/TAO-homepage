@@ -279,6 +279,20 @@ body.theme-luka .visitor-stat i {
   color: var(--luka-accent);
 }
 
+body.theme-luka .sidebar-motto {
+  margin: 22px auto 0;
+  width: 240px;
+  font-size: 13px;
+  line-height: 1.9;
+  font-style: italic;
+  color: var(--luka-secondary);
+  text-align: left;
+}
+
+body.theme-luka .sidebar-motto .motto-quote {
+  color: var(--luka-accent);
+}
+
 body.theme-luka .content {
   flex: 1;
   min-width: 0;
