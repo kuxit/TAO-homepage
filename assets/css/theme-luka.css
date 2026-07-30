@@ -551,29 +551,36 @@ body.theme-luka .card {
 body.theme-luka .timeline-list {
   position: relative;
   display: grid;
-  gap: 14px;
-  padding-left: 24px;
+  gap: 0;
+  padding-left: 26px;
 }
 
 body.theme-luka .timeline-list::before {
   content: "";
   position: absolute;
   left: 6px;
-  top: 20px;
-  bottom: 20px;
+  top: 22px;
+  bottom: 22px;
   width: 1px;
   background: linear-gradient(to bottom, var(--luka-accent), var(--luka-border));
 }
 
 body.theme-luka .timeline-entry {
   position: relative;
+  padding: 14px 0 20px;
+  border-bottom: 1px solid var(--luka-footer-border);
+}
+
+body.theme-luka .timeline-entry:last-child {
+  padding-bottom: 8px;
+  border-bottom: none;
 }
 
 body.theme-luka .timeline-entry::before {
   content: "";
   position: absolute;
   left: -22px;
-  top: 24px;
+  top: 36px;
   width: 7px;
   height: 7px;
   border-radius: 50%;
@@ -588,11 +595,11 @@ body.theme-luka .experience-item {
   grid-template-columns: 52px minmax(0, 1fr) auto;
   align-items: flex-start;
   gap: 16px;
-  padding: 16px 18px;
-  border: 1px solid var(--luka-footer-border);
-  border-radius: 14px;
-  background: var(--luka-panel);
-  box-shadow: 0 8px 24px -22px var(--luka-text);
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 body.theme-luka .institution-logo {
@@ -661,27 +668,58 @@ body.theme-luka .project-card {
 }
 
 body.theme-luka .publications ol.bibliography {
+  position: relative;
   list-style: none;
-  padding: 0;
+  padding: 0 0 0 26px;
   margin: 0;
-  display: grid;
-  gap: 14px;
+}
+
+body.theme-luka .publications ol.bibliography::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 24px;
+  bottom: 24px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--luka-accent), var(--luka-border));
 }
 
 body.theme-luka .publications ol.bibliography li {
+  position: relative;
   margin: 0;
-  padding: 19px 20px;
-  border: 1px solid var(--luka-footer-border);
-  border-radius: 15px;
-  background: var(--luka-panel);
-  box-shadow: 0 10px 28px -26px var(--luka-text);
-  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+  padding: 14px 0 20px;
+  border: none;
+  border-bottom: 1px solid var(--luka-footer-border);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body.theme-luka .publications ol.bibliography li::before {
+  content: "";
+  position: absolute;
+  left: -22px;
+  top: 22px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--luka-accent);
+  border: 3px solid var(--luka-bg);
+  box-shadow: 0 0 0 1px var(--luka-border);
+  z-index: 1;
+}
+
+body.theme-luka .publications ol.bibliography li:last-child {
+  padding-bottom: 10px;
+  border-bottom: none;
 }
 
 body.theme-luka .publications ol.bibliography li:hover {
-  transform: translateY(-2px);
-  border-color: var(--luka-border);
-  box-shadow: 0 14px 30px -24px var(--luka-text);
+  transform: none;
+}
+
+body.theme-luka .publications ol.bibliography li:hover .title {
+  color: var(--luka-accent);
 }
 
 body.theme-luka .pub-meta {
@@ -897,7 +935,7 @@ body.theme-luka summary:focus-visible {
   body.theme-luka .experience-item {
     grid-template-columns: 44px minmax(0, 1fr);
     gap: 10px 12px;
-    padding: 15px;
+    padding: 0;
   }
 
   body.theme-luka .institution-logo {
@@ -926,10 +964,23 @@ body.theme-luka summary:focus-visible {
 
   body.theme-luka .timeline-entry::before {
     left: -18px;
+    top: 32px;
+  }
+
+  body.theme-luka .publications ol.bibliography {
+    padding-left: 20px;
+  }
+
+  body.theme-luka .publications ol.bibliography::before {
+    left: 5px;
+  }
+
+  body.theme-luka .publications ol.bibliography li::before {
+    left: -18px;
   }
 
   body.theme-luka .publications ol.bibliography li {
-    padding: 17px 16px;
+    padding: 14px 0 20px;
   }
 
   body.theme-luka .visitor-card {
