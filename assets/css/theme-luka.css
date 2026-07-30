@@ -141,10 +141,27 @@ body.theme-luka .theme-toggle {
   color: var(--luka-text);
   width: 40px;
   height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 999px;
   cursor: pointer;
   font-size: 18px;
   transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+body.theme-luka .theme-toggle .icon-svg {
+  width: 19px;
+  height: 19px;
+}
+
+body.theme-luka .theme-toggle .icon-sun,
+:root[data-theme="dark"] body.theme-luka .theme-toggle .icon-moon {
+  display: none;
+}
+
+:root[data-theme="dark"] body.theme-luka .theme-toggle .icon-sun {
+  display: block;
 }
 
 body.theme-luka .theme-toggle:hover {
@@ -240,6 +257,25 @@ body.theme-luka .social-icons a:hover {
   transform: translateY(-2px);
 }
 
+body.theme-luka .icon-svg {
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+body.theme-luka .social-icons .icon-svg {
+  width: 17px;
+  height: 17px;
+}
+
+body.theme-luka .social-icons .icon-github {
+  fill: currentColor;
+  stroke: none;
+}
+
 body.theme-luka .visitor-card {
   margin: 40px auto 0;
   width: 240px;
@@ -273,8 +309,11 @@ body.theme-luka .visitor-stat {
   gap: 8px;
 }
 
-body.theme-luka .visitor-stat i {
+body.theme-luka .visitor-stat i,
+body.theme-luka .visitor-stat .icon-svg {
   width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
   text-align: center;
   color: var(--luka-accent);
 }

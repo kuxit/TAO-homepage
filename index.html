@@ -14,7 +14,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
-  <script src="https://kit.fontawesome.com/a860a211d3.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="assets/css/font_sans_serif.css">
   <link rel="stylesheet" href="assets/css/theme-luka.css">
@@ -32,7 +31,13 @@
       </div>
       <div class="nav-right">
         <button id="themeToggle" class="theme-toggle" title="Toggle theme" aria-label="Toggle theme">
-          <i class="fa-solid fa-moon"></i>
+          <svg class="icon-svg icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M21.75 15a9.75 9.75 0 0 1-12.75-12.75A9.75 9.75 0 1 0 21.75 15Z"></path>
+          </svg>
+          <svg class="icon-svg icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="3.5"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+          </svg>
         </button>
       </div>
     </div>
@@ -53,21 +58,36 @@
         </p>
 
         <div class="social-icons">
-          <a href="mailto:2114538797@mails.gdut.edu.cn" title="Email"><i class="fa-solid fa-envelope"></i></a>
+          <a href="mailto:2114538797@mails.gdut.edu.cn" title="Email" aria-label="Email">
+            <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+              <path d="m4 7 8 6 8-6"></path>
+            </svg>
+          </a>
           <a href="https://scholar.google.com/citations?user=UXUOLrkAAAAJ&hl=en" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
           <a href="https://orcid.org/0009-0008-8879-9131" title="ORCID"><i class="ai ai-orcid"></i></a>
-          <a href="https://github.com/kuxit" title="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://github.com/kuxit" title="GitHub" aria-label="GitHub">
+            <svg class="icon-svg icon-github" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 .3a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58l-.02-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 6.32c1.02 0 2.05.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18.76.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.44.37.81 1.1.81 2.22l-.02 3.29c0 .31.21.69.83.57A12 12 0 0 0 12 .3Z"></path>
+            </svg>
+          </a>
         </div>
 
         <div class="visitor-card">
           <div class="visitor-card-title">Visitors</div>
           <div class="visitor-card-body" id="busuanzi_container_site" style="display:none;">
             <span class="visitor-stat">
-              <i class="fa-solid fa-eye"></i>
+              <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"></path>
+                <circle cx="12" cy="12" r="2.4"></circle>
+              </svg>
               <span id="busuanzi_value_site_pv">0</span> views
             </span>
             <span class="visitor-stat">
-              <i class="fa-solid fa-user"></i>
+              <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="8" r="3.25"></circle>
+                <path d="M5.5 20c.55-4 2.72-6 6.5-6s5.95 2 6.5 6"></path>
+              </svg>
               <span id="busuanzi_value_site_uv">0</span> visitors
             </span>
           </div>
@@ -248,12 +268,9 @@
   <script>
     (function() {
       const themeToggle = document.getElementById('themeToggle');
-      const icon = themeToggle.querySelector('i');
 
       function setTheme(isDark) {
         document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-        icon.classList.toggle('fa-sun', isDark);
-        icon.classList.toggle('fa-moon', !isDark);
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       }
 
