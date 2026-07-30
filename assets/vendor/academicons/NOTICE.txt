@@ -1,0 +1,4 @@
+Academicons 1.8.6
+https://github.com/jpswalsh/academicons
+
+Licensed under the SIL Open Font License 1.1 or the MIT License.

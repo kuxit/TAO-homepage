@@ -14,10 +14,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/vendor/academicons/css/academicons.min.css">
 
   <link rel="stylesheet" href="assets/css/font_sans_serif.css">
-  <link rel="stylesheet" href="assets/css/theme-luka.css?v=20260731-open-timeline">
+  <link rel="stylesheet" href="assets/css/theme-luka.css?v=20260731-mobile-icons">
 </head>
 <body class="theme-luka">
   <nav class="top-nav" aria-label="Primary navigation">
@@ -263,10 +263,12 @@
       const container = document.getElementById('busuanzi_container_site');
       const pv = document.getElementById('busuanzi_value_site_pv');
       if (!container || !pv) return;
+      const card = container.closest('.visitor-card');
       let tries = 0;
       const timer = setInterval(function() {
         if (pv.textContent && pv.textContent !== '0') {
           container.style.display = '';
+          if (card) card.classList.add('is-ready');
           clearInterval(timer);
         } else if (++tries > 20) {
           clearInterval(timer);

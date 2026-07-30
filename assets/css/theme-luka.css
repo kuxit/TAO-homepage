@@ -984,8 +984,53 @@ body.theme-luka summary:focus-visible {
   }
 
   body.theme-luka .visitor-card {
+    display: none;
+  }
+
+  body.theme-luka .visitor-card.is-ready {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
     width: 100%;
-    max-width: 280px;
+    max-width: none;
+    margin: 22px auto 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    text-align: center;
+  }
+
+  body.theme-luka .visitor-card-title {
+    margin: 0;
+    font-size: 11px;
+  }
+
+  body.theme-luka .visitor-card-body {
+    flex-direction: row;
+    justify-content: center;
+    gap: 14px;
+    font-size: 12px;
+  }
+
+  body.theme-luka .visitor-stat {
+    gap: 5px;
+  }
+
+  body.theme-luka .visitor-stat i,
+  body.theme-luka .visitor-stat .icon-svg {
+    width: 14px;
+    height: 14px;
+    flex-basis: 14px;
+  }
+
+  body.theme-luka .sidebar-motto {
+    width: 100%;
+    max-width: 300px;
+    margin: 16px auto 0;
+    font-size: 12px;
+    line-height: 1.65;
+    text-align: center;
   }
 }
 
