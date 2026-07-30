@@ -8,6 +8,7 @@
   <meta name="description" content="Tao Xie (谢涛) — researcher in time-series machine learning at Guangdong University of Technology, advised by Prof. Yiqun Zhang. Publications at KDD, BIBM, PRICAI.">
   <meta name="keywords" content="Tao Xie, 谢涛, time series, machine learning, KDD, mixture of experts, interpretable machine learning, GDUT">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <script>document.documentElement.classList.add('js');</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,18 +17,18 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
 
   <link rel="stylesheet" href="assets/css/font_sans_serif.css">
-  <link rel="stylesheet" href="assets/css/theme-luka.css?v=20260731-icons">
+  <link rel="stylesheet" href="assets/css/theme-luka.css?v=20260731-refine">
 </head>
 <body class="theme-luka">
-  <nav class="top-nav">
+  <nav class="top-nav" aria-label="Primary navigation">
     <div class="nav-container">
       <div class="nav-left">
         <a href="./" class="nav-brand">Home</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#education" class="nav-link">Education</a>
-        <a href="#experience" class="nav-link">Experience</a>
-        <a href="#publications" class="nav-link">Publications</a>
-        <a href="#awards" class="nav-link">Awards</a>
+        <a href="#about" class="nav-link is-active" aria-current="location"><span class="nav-label-full">About</span><span class="nav-label-short">About</span></a>
+        <a href="#education" class="nav-link"><span class="nav-label-full">Education</span><span class="nav-label-short">Edu</span></a>
+        <a href="#experience" class="nav-link"><span class="nav-label-full">Experience</span><span class="nav-label-short">Exp</span></a>
+        <a href="#publications" class="nav-link"><span class="nav-label-full">Publications</span><span class="nav-label-short">Pubs</span></a>
+        <a href="#awards" class="nav-link"><span class="nav-label-full">Awards</span><span class="nav-label-short">Awards</span></a>
       </div>
       <div class="nav-right">
         <button id="themeToggle" class="theme-toggle" title="Toggle theme" aria-label="Toggle theme">
@@ -51,11 +52,16 @@
         </a>
 
         <h1 class="site-name">Tao Xie <span lang="zh-Hans">谢涛</span></h1>
-        <p class="site-email" style="line-height:1.9;">
-          2114538797@mails.gdut.edu.cn<br>
-          3123001085@mail2.gdut.edu.cn<br>
-          wyyxxadll@gmail.com
-        </p>
+        <div class="contact-block">
+          <a class="primary-email" href="mailto:2114538797@mails.gdut.edu.cn">2114538797@mails.gdut.edu.cn</a>
+          <details class="alternate-contacts">
+            <summary>Other contacts</summary>
+            <div class="alternate-contact-list">
+              <a href="mailto:3123001085@mail2.gdut.edu.cn">3123001085@mail2.gdut.edu.cn</a>
+              <a href="mailto:wyyxxadll@gmail.com">wyyxxadll@gmail.com</a>
+            </div>
+          </details>
+        </div>
 
         <div class="social-icons">
           <a href="mailto:2114538797@mails.gdut.edu.cn" title="Email" aria-label="Email">
@@ -64,9 +70,9 @@
               <path d="m4 7 8 6 8-6"></path>
             </svg>
           </a>
-          <a href="https://scholar.google.com/citations?user=UXUOLrkAAAAJ&hl=en" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
-          <a href="https://orcid.org/0009-0008-8879-9131" title="ORCID"><i class="ai ai-orcid"></i></a>
-          <a href="https://github.com/kuxit" title="GitHub" aria-label="GitHub">
+          <a href="https://scholar.google.com/citations?user=UXUOLrkAAAAJ&hl=en" title="Google Scholar" aria-label="Google Scholar" target="_blank" rel="noopener"><i class="ai ai-google-scholar" aria-hidden="true"></i></a>
+          <a href="https://orcid.org/0009-0008-8879-9131" title="ORCID" aria-label="ORCID" target="_blank" rel="noopener"><i class="ai ai-orcid" aria-hidden="true"></i></a>
+          <a href="https://github.com/kuxit" title="GitHub" aria-label="GitHub" target="_blank" rel="noopener">
             <svg class="icon-svg icon-github" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path d="M12 .3a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58l-.02-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 6.32c1.02 0 2.05.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18.76.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.44.37.81 1.1.81 2.22l-.02 3.29c0 .31.21.69.83.57A12 12 0 0 0 12 .3Z"></path>
             </svg>
@@ -100,7 +106,7 @@
     <section class="content">
       <div class="section" id="about">
         <div class="about-head">
-          <h2 class="section-title">About Me</h2>
+          <h2 class="section-title"><span class="section-index">01</span><span class="section-label">About Me</span></h2>
           <div class="lang-switch" role="group" aria-label="About Me language">
             <button type="button" class="lang-btn is-active" data-lang="en">EN</button>
             <button type="button" class="lang-btn" data-lang="hans" lang="zh-Hans">简</button>
@@ -127,60 +133,60 @@
       </div>
 
       <div class="section" id="education">
-        <h2 class="section-title">Education</h2>
-        <div class="section-body">
-          <div class="card">
+        <h2 class="section-title"><span class="section-index">02</span><span class="section-label">Education</span></h2>
+        <div class="section-body timeline-list">
+          <div class="card timeline-entry">
             <div class="experience-item">
               <img src="assets/img/gdut.svg" alt="GDUT logo" class="institution-logo" loading="lazy" decoding="async">
               <div class="experience-content">
                 <p class="exp-title"><strong>Guangdong University of Technology</strong></p>
                 <p class="exp-detail">B.S. in Automation &middot; University Town Campus</p>
-                <p class="exp-period">2023 - 2027 (expected)</p>
               </div>
+              <span class="exp-period">2023–2027 <span>(expected)</span></span>
             </div>
           </div>
 
-          <div class="card">
+          <div class="card timeline-entry">
             <div class="experience-item">
               <img src="assets/img/lecong.png" alt="Lecong Middle School logo" class="institution-logo" loading="lazy" decoding="async">
               <div class="experience-content">
                 <p class="exp-title"><strong>Lecong Middle School</strong></p>
                 <p class="exp-detail">Senior High School &middot; Shunde, Foshan</p>
-                <p class="exp-period">2020 - 2023</p>
               </div>
+              <span class="exp-period">2020–2023</span>
             </div>
           </div>
         </div>
       </div>
 
       <div class="section" id="experience">
-        <h2 class="section-title">Experience</h2>
-        <div class="section-body">
-          <div class="card timeline-item">
+        <h2 class="section-title"><span class="section-index">03</span><span class="section-label">Experience</span></h2>
+        <div class="section-body timeline-list">
+          <div class="card timeline-entry">
             <div class="experience-item">
               <img src="assets/img/OMG.png" alt="OMG Lab logo" class="institution-logo" loading="lazy" decoding="async">
               <div class="experience-content">
                 <p class="exp-title"><strong>OMG Lab, Guangdong University of Technology</strong></p>
                 <p class="exp-detail">Undergraduate Researcher &middot; SIGMTA group</p>
                 <p class="exp-detail"><em>Advisor:</em> Prof. Yiqun Zhang</p>
-                <p class="exp-period">2025 - Present</p>
               </div>
+              <span class="exp-period">2025–Present</span>
             </div>
           </div>
         </div>
       </div>
 
       <div class="section" id="publications">
-        <h2 class="section-title">Publications</h2>
+        <h2 class="section-title"><span class="section-index">04</span><span class="section-label">Publications</span></h2>
         <div class="section-body">
           <div class="publications">
             <ol class="bibliography">
               <li>
                 <div class="pub-row">
                   <div class="pub-content">
+                    <div class="pub-meta"><span class="pub-year">2026</span><span class="pub-tag pub-tag-a">KDD · CCF-A</span></div>
                     <div class="title">AnchorMoE: Interpretable Time Series Classification via Anchor-Routed MoE</div>
                     <div class="author"><strong>Tao Xie</strong>, Zexi Tan, Haoyi Xiao, Mengke Li, Yiqun Zhang&dagger;, Yang Lu, Cuie Yang, Yiu-ming Cheung</div>
-                    <div class="periodical"><em><strong>ACM SIGKDD 2026</strong></em> (CCF-A)</div>
                     <div class="links">
                       <a href="https://arxiv.org/abs/2606.03631" target="_blank" rel="noopener">arXiv</a>
                     </div>
@@ -190,9 +196,9 @@
               <li>
                 <div class="pub-row">
                   <div class="pub-content">
+                    <div class="pub-meta"><span class="pub-year">2025</span><span class="pub-tag pub-tag-b">BIBM · CCF-B</span></div>
                     <div class="title">DE3S: Dual-Enhanced Soft-Sparse-Shape Learning for Medical Early Time-Series Classification</div>
                     <div class="author"><strong>Tao Xie</strong>, Zexi Tan, Haoyi Xiao, B. Sun, Yiqun Zhang&dagger;</div>
-                    <div class="periodical"><em><strong>IEEE BIBM 2025</strong></em> (CCF-B)</div>
                     <div class="links">
                       <a href="https://arxiv.org/abs/2510.12214" target="_blank" rel="noopener">arXiv</a>
                     </div>
@@ -202,9 +208,9 @@
               <li>
                 <div class="pub-row">
                   <div class="pub-content">
+                    <div class="pub-meta"><span class="pub-year">2025</span><span class="pub-tag pub-tag-c">PRICAI · CCF-C</span></div>
                     <div class="title">MEET-Sepsis: Multi-Endogenous-View Enhanced Time-Series Representation Learning for Early Sepsis Prediction</div>
                     <div class="author">Zexi Tan, <strong>Tao Xie</strong>, B. Sun, X. Zhang, Yiqun Zhang&dagger;, Yiu-ming Cheung</div>
-                    <div class="periodical"><em><strong>PRICAI 2025</strong></em> (CCF-C)</div>
                     <div class="links">
                       <a href="https://arxiv.org/abs/2510.15985" target="_blank" rel="noopener">arXiv</a>
                     </div>
@@ -218,7 +224,7 @@
       </div>
 
       <div class="section" id="awards">
-        <h2 class="section-title">Awards</h2>
+        <h2 class="section-title"><span class="section-index">05</span><span class="section-label">Awards</span></h2>
         <div class="section-body">
           <div class="awards-grid">
             <div class="award-item">
@@ -282,6 +288,46 @@
         const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         setTheme(!isDark);
       });
+
+      const navLinks = Array.from(document.querySelectorAll('.nav-link[href^="#"]'));
+      const navSections = navLinks.map(function(link) {
+        return {
+          link: link,
+          section: document.querySelector(link.getAttribute('href'))
+        };
+      }).filter(function(item) {
+        return item.section;
+      });
+
+      let navTicking = false;
+      function updateActiveNav() {
+        if (!navSections.length) return;
+        const marker = window.scrollY + Math.max(110, window.innerHeight * 0.28);
+        let active = navSections[0];
+        navSections.forEach(function(item) {
+          if (item.section.offsetTop <= marker) active = item;
+        });
+        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8) {
+          active = navSections[navSections.length - 1];
+        }
+        navSections.forEach(function(item) {
+          const isActive = item === active;
+          item.link.classList.toggle('is-active', isActive);
+          if (isActive) item.link.setAttribute('aria-current', 'location');
+          else item.link.removeAttribute('aria-current');
+        });
+        navTicking = false;
+      }
+
+      function requestNavUpdate() {
+        if (navTicking) return;
+        navTicking = true;
+        window.requestAnimationFrame(updateActiveNav);
+      }
+
+      window.addEventListener('scroll', requestNavUpdate, { passive: true });
+      window.addEventListener('resize', requestNavUpdate);
+      updateActiveNav();
 
       if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver(function(entries) {
