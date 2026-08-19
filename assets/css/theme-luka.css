@@ -100,72 +100,6 @@ body.theme-luka *::after {
   --luka-footer-border: rgba(169, 91, 61, 0.16);
 }
 
-/* Theme reveal: dark closes in from the viewport edge; light radiates out. */
-:root[data-theme-transition] body.theme-luka,
-:root[data-theme-transition] body.theme-luka *,
-:root[data-theme-transition] body.theme-luka::before,
-:root[data-theme-transition] body.theme-luka::after,
-:root[data-theme-transition] body.theme-luka *::before,
-:root[data-theme-transition] body.theme-luka *::after {
-  transition: none !important;
-}
-
-:root[data-theme-transition]::view-transition-image-pair(root) {
-  isolation: isolate;
-}
-
-:root[data-theme-transition]::view-transition-old(root),
-:root[data-theme-transition]::view-transition-new(root) {
-  display: block;
-  animation: none;
-  mix-blend-mode: normal;
-}
-
-:root[data-theme-transition="to-dark"]::view-transition-new(root),
-:root[data-theme-transition="to-light"]::view-transition-old(root) {
-  z-index: 1;
-}
-
-:root[data-theme-transition="to-dark"]::view-transition-old(root) {
-  z-index: 2;
-  animation: luka-theme-contract 440ms cubic-bezier(0.65, 0, 0.35, 1) both;
-  will-change: clip-path;
-}
-
-:root[data-theme-transition="to-light"]::view-transition-new(root) {
-  z-index: 2;
-  animation: luka-theme-expand 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  will-change: clip-path;
-}
-
-@keyframes luka-theme-contract {
-  from {
-    clip-path: circle(var(--theme-reveal-radius) at 50% 50%);
-  }
-  to {
-    clip-path: circle(0 at 50% 50%);
-  }
-}
-
-@keyframes luka-theme-expand {
-  from {
-    clip-path: circle(0 at 50% 50%);
-  }
-  to {
-    clip-path: circle(var(--theme-reveal-radius) at 50% 50%);
-  }
-}
-
-@media (max-width: 640px) {
-  :root[data-theme-transition="to-dark"]::view-transition-old(root) {
-    animation-duration: 380ms;
-  }
-
-  :root[data-theme-transition="to-light"]::view-transition-new(root) {
-    animation-duration: 430ms;
-  }
-}
-
 body.theme-luka {
   background: var(--luka-bg);
   color: var(--luka-text);
@@ -1383,11 +1317,6 @@ body.theme-luka summary:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  :root::view-transition-old(root),
-  :root::view-transition-new(root) {
-    animation: none !important;
   }
 
   body.theme-luka *,

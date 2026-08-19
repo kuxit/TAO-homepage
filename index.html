@@ -27,7 +27,7 @@
   </script>
 
   <link rel="stylesheet" href="assets/vendor/academicons/css/academicons.min.css">
-  <link rel="stylesheet" href="assets/css/theme-luka.css?v=20260819-theme-reveal">
+  <link rel="stylesheet" href="assets/css/theme-luka.css?v=20260819-mobile-avatar">
 </head>
 <body class="theme-luka">
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -322,69 +322,13 @@
 
       setTheme(root.getAttribute('data-theme') === 'dark', false);
 
-      let themeTransitionInProgress = false;
-      let activeThemeTarget = null;
-      let queuedThemeRequest = null;
-
-      function cleanupThemeTransition() {
-        root.removeAttribute('data-theme-transition');
-        root.style.removeProperty('--theme-reveal-radius');
-        themeTransitionInProgress = false;
-        activeThemeTarget = null;
-
-        const queuedRequest = queuedThemeRequest;
-        queuedThemeRequest = null;
-        if (queuedRequest &&
-            (root.getAttribute('data-theme') === 'dark') !== queuedRequest.isDark) {
-          transitionToTheme(queuedRequest.isDark, queuedRequest.persist);
-        }
-      }
-
-      function transitionToTheme(isDark, persist) {
-        if (themeTransitionInProgress) {
-          queuedThemeRequest = { isDark: isDark, persist: persist };
-          return;
-        }
-
-        const canAnimate = typeof document.startViewTransition === 'function' &&
-          window.CSS && typeof CSS.supports === 'function' &&
-          CSS.supports('clip-path', 'circle(1px at 50% 50%)') &&
-          !reducedMotion.matches && document.visibilityState === 'visible';
-
-        if (!canAnimate) {
-          setTheme(isDark, persist);
-          return;
-        }
-
-        themeTransitionInProgress = true;
-        activeThemeTarget = isDark;
-        root.setAttribute('data-theme-transition', isDark ? 'to-dark' : 'to-light');
-        const revealRadius = Math.ceil(Math.hypot(window.innerWidth / 2, window.innerHeight / 2)) + 2;
-        root.style.setProperty('--theme-reveal-radius', revealRadius + 'px');
-
-        let themeApplied = false;
-        try {
-          const transition = document.startViewTransition(function() {
-            themeApplied = true;
-            setTheme(isDark, persist);
-          });
-          transition.ready.catch(function() {});
-          transition.updateCallbackDone.catch(function() {});
-          transition.finished.then(cleanupThemeTransition, cleanupThemeTransition);
-        } catch (error) {
-          if (!themeApplied) setTheme(isDark, persist);
-          cleanupThemeTransition();
-        }
-      }
-
       themeToggle.addEventListener('click', function() {
-        const isDark = queuedThemeRequest ? queuedThemeRequest.isDark :
-          (themeTransitionInProgress ? activeThemeTarget : root.getAttribute('data-theme') === 'dark');
-        transitionToTheme(!isDark, true);
+        const isDark = root.getAttribute('data-theme') === 'dark';
+        setTheme(!isDark, true);
       });
 
       function followSystemTheme(event) {
-        if (!themeTransitionInProgress && !hasSavedTheme()) setTheme(event.matches, false);
+        if (!hasSavedTheme()) setTheme(event.matches, false);
       }
 
       if (systemTheme.addEventListener) systemTheme.addEventListener('change', followSystemTheme);
