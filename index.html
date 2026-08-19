@@ -7,19 +7,30 @@
   <title>Tao Xie (谢涛) - Homepage</title>
   <meta name="description" content="Tao Xie (谢涛) — researcher in time-series machine learning at Guangdong University of Technology, advised by Prof. Yiqun Zhang. Publications at KDD, BIBM, PRICAI.">
   <meta name="keywords" content="Tao Xie, 谢涛, time series, machine learning, KDD, mixture of experts, interpretable machine learning, GDUT">
+  <meta id="themeColor" name="theme-color" content="#faf9f7">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <script>document.documentElement.classList.add('js');</script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (function() {
+      const root = document.documentElement;
+      let savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const hasValidTheme = savedTheme === 'dark' || savedTheme === 'light';
+      const isDark = hasValidTheme ? savedTheme === 'dark' : prefersDark;
+      root.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      document.getElementById('themeColor').setAttribute('content', isDark ? '#1a1917' : '#faf9f7');
+    })();
+  </script>
 
   <link rel="stylesheet" href="assets/vendor/academicons/css/academicons.min.css">
-
-  <link rel="stylesheet" href="assets/css/font_sans_serif.css">
-  <link rel="stylesheet" href="assets/css/theme-luka.css?v=20260731-mobile-icons">
+  <link rel="stylesheet" href="assets/css/theme-luka.css?v=20260819-system-polish">
 </head>
 <body class="theme-luka">
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <nav class="top-nav" aria-label="Primary navigation">
     <div class="nav-container">
       <div class="nav-left">
@@ -31,7 +42,7 @@
         <a href="#awards" class="nav-link"><span class="nav-label-full">Awards</span><span class="nav-label-short">Awards</span></a>
       </div>
       <div class="nav-right">
-        <button id="themeToggle" class="theme-toggle" title="Toggle theme" aria-label="Toggle theme">
+        <button id="themeToggle" class="theme-toggle" title="Switch to dark theme" aria-label="Dark theme" aria-pressed="false">
           <svg class="icon-svg icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path d="M21.75 15a9.75 9.75 0 0 1-12.75-12.75A9.75 9.75 0 1 0 21.75 15Z"></path>
           </svg>
@@ -47,9 +58,9 @@
   <div class="wrapper">
     <header class="sidebar">
       <div class="profile-card">
-        <a class="image avatar">
-          <img src="assets/img/portrait.jpg" alt="Tao Xie" decoding="async">
-        </a>
+        <div class="image avatar">
+          <img src="assets/img/portrait.jpg" alt="Tao Xie" width="440" height="587" decoding="async" fetchpriority="high">
+        </div>
 
         <h1 class="site-name">Tao Xie <span lang="zh-Hans">谢涛</span></h1>
         <div class="contact-block">
@@ -81,20 +92,20 @@
 
         <div class="visitor-card">
           <div class="visitor-card-title">Visitors</div>
-          <div class="visitor-card-body" id="busuanzi_container_site" style="display:none;">
+          <div class="visitor-card-body" id="busuanzi_container_site" aria-live="polite">
             <span class="visitor-stat">
               <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"></path>
                 <circle cx="12" cy="12" r="2.4"></circle>
               </svg>
-              <span id="busuanzi_value_site_pv">0</span> views
+              <span id="busuanzi_value_site_pv">—</span> views
             </span>
             <span class="visitor-stat">
               <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <circle cx="12" cy="8" r="3.25"></circle>
                 <path d="M5.5 20c.55-4 2.72-6 6.5-6s5.95 2 6.5 6"></path>
               </svg>
-              <span id="busuanzi_value_site_uv">0</span> visitors
+              <span id="busuanzi_value_site_uv">—</span> visitors
             </span>
           </div>
         </div>
@@ -103,14 +114,14 @@
       </div>
     </header>
 
-    <section class="content">
+    <main class="content" id="main-content">
       <div class="section" id="about">
         <div class="about-head">
           <h2 class="section-title"><span class="section-index">01</span><span class="section-label">About Me</span></h2>
           <div class="lang-switch" role="group" aria-label="About Me language">
-            <button type="button" class="lang-btn is-active" data-lang="en">EN</button>
-            <button type="button" class="lang-btn" data-lang="hans" lang="zh-Hans">简</button>
-            <button type="button" class="lang-btn" data-lang="hant" lang="zh-Hant">繁</button>
+            <button type="button" class="lang-btn is-active" data-lang="en" aria-label="English" aria-pressed="true">EN</button>
+            <button type="button" class="lang-btn" data-lang="hans" lang="zh-Hans" aria-label="简体中文" aria-pressed="false">简</button>
+            <button type="button" class="lang-btn" data-lang="hant" lang="zh-Hant" aria-label="繁體中文" aria-pressed="false">繁</button>
           </div>
         </div>
         <div class="section-body">
@@ -229,35 +240,34 @@
       <div class="section" id="awards">
         <h2 class="section-title"><span class="section-index">05</span><span class="section-label">Awards</span></h2>
         <div class="section-body">
-          <div class="awards-grid">
+          <div class="awards-grid" lang="zh-Hans">
             <div class="award-item">
-              <span class="award-icon">🏆</span>
+              <span class="award-icon" aria-hidden="true">🏆</span>
               <div class="award-text"><strong>"华商智演·全球 AI 场景实战创新大赛" 决赛特等奖</strong><br>2026 &middot; 核心成员</div>
             </div>
             <div class="award-item">
-              <span class="award-icon">🥇</span>
+              <span class="award-icon" aria-hidden="true">🥇</span>
               <div class="award-text"><strong>第18届全国大学生计算机设计大赛 国赛一等奖</strong><br>2025 &middot; 第二负责人</div>
             </div>
             <div class="award-item">
-              <span class="award-icon">🥈</span>
+              <span class="award-icon" aria-hidden="true">🥈</span>
               <div class="award-text"><strong>第十一届全国大学生物理实验竞赛（创新）国赛二等奖</strong><br>2025 &middot; 核心成员</div>
             </div>
             <div class="award-item">
-              <span class="award-icon">🎖️</span>
+              <span class="award-icon" aria-hidden="true">🎖️</span>
               <div class="award-text"><strong>广东工业大学校级二等奖学金</strong><br>2025</div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </main>
 
     <footer class="site-footer">
       <p>&copy; 2026 Tao Xie (谢涛). All rights reserved.</p>
     </footer>
   </div>
 
-  <script src="assets/js/scale.fix.js"></script>
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <script>
     (function() {
       const container = document.getElementById('busuanzi_container_site');
@@ -266,11 +276,11 @@
       const card = container.closest('.visitor-card');
       let tries = 0;
       const timer = setInterval(function() {
-        if (pv.textContent && pv.textContent !== '0') {
-          container.style.display = '';
+        if (pv.textContent && pv.textContent !== '0' && pv.textContent !== '—') {
           if (card) card.classList.add('is-ready');
           clearInterval(timer);
         } else if (++tries > 20) {
+          if (card) card.classList.add('is-unavailable');
           clearInterval(timer);
         }
       }, 300);
@@ -278,23 +288,54 @@
   </script>
   <script>
     (function() {
+      const root = document.documentElement;
       const themeToggle = document.getElementById('themeToggle');
+      const themeColor = document.getElementById('themeColor');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-      function setTheme(isDark) {
-        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      function hasSavedTheme() {
+        try {
+          const savedTheme = localStorage.getItem('theme');
+          return savedTheme === 'dark' || savedTheme === 'light';
+        } catch (error) {
+          return false;
+        }
       }
 
-      const savedTheme = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setTheme(savedTheme ? savedTheme === 'dark' : prefersDark);
+      function setTheme(isDark, persist) {
+        const theme = isDark ? 'dark' : 'light';
+        const nextTheme = isDark ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        if (themeColor) themeColor.setAttribute('content', isDark ? '#1a1917' : '#faf9f7');
+        themeToggle.setAttribute('aria-label', 'Dark theme');
+        themeToggle.setAttribute('title', 'Switch to ' + nextTheme + ' theme');
+        themeToggle.setAttribute('aria-pressed', String(isDark));
+        if (persist) {
+          try {
+            localStorage.setItem('theme', theme);
+          } catch (error) {
+            // The selected theme still applies when storage is unavailable.
+          }
+        }
+      }
+
+      setTheme(root.getAttribute('data-theme') === 'dark', false);
 
       themeToggle.addEventListener('click', function() {
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        setTheme(!isDark);
+        const isDark = root.getAttribute('data-theme') === 'dark';
+        setTheme(!isDark, true);
       });
 
+      function followSystemTheme(event) {
+        if (!hasSavedTheme()) setTheme(event.matches, false);
+      }
+
+      if (systemTheme.addEventListener) systemTheme.addEventListener('change', followSystemTheme);
+      else if (systemTheme.addListener) systemTheme.addListener(followSystemTheme);
+
       const navLinks = Array.from(document.querySelectorAll('.nav-link[href^="#"]'));
+      const navRail = document.querySelector('.nav-left');
       const navSections = navLinks.map(function(link) {
         return {
           link: link,
@@ -305,6 +346,41 @@
       });
 
       let navTicking = false;
+      let activeNavLink = null;
+
+      function updateNavRailFades() {
+        if (!navRail) return;
+        const maxScroll = Math.max(0, navRail.scrollWidth - navRail.clientWidth);
+        navRail.classList.toggle('can-scroll-left', navRail.scrollLeft > 2);
+        navRail.classList.toggle('can-scroll-right', navRail.scrollLeft < maxScroll - 2);
+      }
+
+      function revealActiveNav(link) {
+        if (!navRail || window.innerWidth > 640) return;
+        const inset = 8;
+        const railRect = navRail.getBoundingClientRect();
+        const linkRect = link.getBoundingClientRect();
+        const leftEdge = railRect.left + inset;
+        const rightEdge = railRect.right - inset;
+        let target = navRail.scrollLeft;
+
+        if (link === navLinks[0]) target = 0;
+        else if (linkRect.left < leftEdge) target += linkRect.left - leftEdge;
+        else if (linkRect.right > rightEdge) target += linkRect.right - rightEdge;
+        else return;
+
+        target = Math.max(0, target);
+
+        if (typeof navRail.scrollTo === 'function') {
+          navRail.scrollTo({
+            left: target,
+            behavior: reducedMotion.matches ? 'auto' : 'smooth'
+          });
+        } else {
+          navRail.scrollLeft = target;
+        }
+      }
+
       function updateActiveNav() {
         if (!navSections.length) return;
         const marker = window.scrollY + Math.max(110, window.innerHeight * 0.28);
@@ -321,6 +397,11 @@
           if (isActive) item.link.setAttribute('aria-current', 'location');
           else item.link.removeAttribute('aria-current');
         });
+        if (active.link !== activeNavLink) {
+          activeNavLink = active.link;
+          revealActiveNav(activeNavLink);
+        }
+        updateNavRailFades();
         navTicking = false;
       }
 
@@ -331,10 +412,21 @@
       }
 
       window.addEventListener('scroll', requestNavUpdate, { passive: true });
-      window.addEventListener('resize', requestNavUpdate);
+      window.addEventListener('resize', function() {
+        requestNavUpdate();
+        updateNavRailFades();
+      });
+      if (navRail) navRail.addEventListener('scroll', updateNavRailFades, { passive: true });
       updateActiveNav();
 
-      if ('IntersectionObserver' in window) {
+      const sections = Array.from(document.querySelectorAll('.section'));
+      if ('IntersectionObserver' in window && !reducedMotion.matches) {
+        sections.forEach(function(section) {
+          if (section.getBoundingClientRect().top < window.innerHeight * 0.92) {
+            section.classList.add('visible');
+          }
+        });
+        root.classList.add('reveal-ready');
         const observer = new IntersectionObserver(function(entries) {
           entries.forEach(function(entry) {
             if (entry.isIntersecting) {
@@ -344,41 +436,135 @@
           });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.section').forEach(function(el) {
-          observer.observe(el);
+        sections.forEach(function(section) {
+          if (!section.classList.contains('visible')) observer.observe(section);
         });
       } else {
-        document.querySelectorAll('.section').forEach(function(el) {
-          el.classList.add('visible');
+        sections.forEach(function(section) {
+          section.classList.add('visible');
         });
       }
     })();
 
     (function() {
-      const buttons = document.querySelectorAll('.lang-switch .lang-btn');
-      const blocks = document.querySelectorAll('.about-lang');
+      const switcher = document.querySelector('.lang-switch');
+      const buttons = Array.from(document.querySelectorAll('.lang-switch .lang-btn'));
+      const blocks = Array.from(document.querySelectorAll('.about-lang'));
+      const copy = document.querySelector('#about .section-body');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
       if (!buttons.length || !blocks.length) return;
+      let switchRun = 0;
+      let activeCopyAnimation = null;
 
-      function apply(lang) {
-        let matched = false;
+      function setControls(lang) {
+        const index = buttons.findIndex(function(button) {
+          return button.getAttribute('data-lang') === lang;
+        });
+        if (index < 0) return false;
+        if (switcher) switcher.style.setProperty('--lang-index', index);
+        buttons.forEach(function(button) {
+          const selected = button.getAttribute('data-lang') === lang;
+          button.classList.toggle('is-active', selected);
+          button.setAttribute('aria-pressed', String(selected));
+        });
+        return true;
+      }
+
+      function swapBlocks(lang) {
         blocks.forEach(function(b) {
           const on = b.getAttribute('data-lang') === lang;
           b.classList.toggle('is-active', on);
-          if (on) matched = true;
         });
-        if (!matched) return;
-        buttons.forEach(function(btn) {
-          btn.classList.toggle('is-active', btn.getAttribute('data-lang') === lang);
-        });
-        localStorage.setItem('aboutLang', lang);
       }
 
-      const saved = localStorage.getItem('aboutLang');
-      if (saved) apply(saved);
+      function saveLanguage(lang) {
+        try {
+          localStorage.setItem('aboutLang', lang);
+        } catch (error) {
+          // Language switching still works when storage is unavailable.
+        }
+      }
+
+      function apply(lang, animate, persist) {
+        const target = blocks.find(function(block) {
+          return block.getAttribute('data-lang') === lang;
+        });
+        if (!target) return;
+
+        const current = blocks.find(function(block) {
+          return block.classList.contains('is-active');
+        });
+        switchRun += 1;
+        const run = switchRun;
+        if (activeCopyAnimation) {
+          activeCopyAnimation.cancel();
+          activeCopyAnimation = null;
+        }
+        if (copy) {
+          copy.style.height = '';
+          copy.style.overflow = '';
+        }
+        if (!setControls(lang)) return;
+        if (persist) saveLanguage(lang);
+        if (current === target) return;
+
+        if (!animate || reducedMotion.matches || !copy || !copy.animate) {
+          swapBlocks(lang);
+          return;
+        }
+
+        const startHeight = copy.getBoundingClientRect().height;
+        const fadeOut = copy.animate([
+          { opacity: 1, transform: 'translateY(0)' },
+          { opacity: 0, transform: 'translateY(-3px)' }
+        ], {
+          duration: 90,
+          easing: 'ease-out',
+          fill: 'forwards'
+        });
+        activeCopyAnimation = fadeOut;
+
+        fadeOut.finished.then(function() {
+          if (run !== switchRun) return;
+          swapBlocks(lang);
+          const endHeight = copy.getBoundingClientRect().height;
+          fadeOut.cancel();
+          activeCopyAnimation = null;
+          copy.style.height = startHeight + 'px';
+          copy.style.overflow = 'hidden';
+
+          const enter = copy.animate([
+            { height: startHeight + 'px', opacity: 0, transform: 'translateY(4px)' },
+            { height: endHeight + 'px', opacity: 1, transform: 'translateY(0)' }
+          ], {
+            duration: 220,
+            easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+            fill: 'both'
+          });
+          activeCopyAnimation = enter;
+
+          enter.finished.then(function() {
+            if (run === switchRun) {
+              enter.cancel();
+              activeCopyAnimation = null;
+              copy.style.height = '';
+              copy.style.overflow = '';
+            }
+          }).catch(function() {});
+        }).catch(function() {});
+      }
+
+      let saved = null;
+      try {
+        saved = localStorage.getItem('aboutLang');
+      } catch (error) {
+        saved = null;
+      }
+      if (saved) apply(saved, false, false);
 
       buttons.forEach(function(btn) {
         btn.addEventListener('click', function() {
-          apply(btn.getAttribute('data-lang'));
+          apply(btn.getAttribute('data-lang'), true, true);
         });
       });
     })();
