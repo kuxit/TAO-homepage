@@ -1142,8 +1142,12 @@ body.theme-luka summary:focus-visible {
   }
 
   body.theme-luka .image.avatar img {
-    width: 148px;
-    height: 148px;
+    width: clamp(112px, 32vw, 124px);
+    height: clamp(112px, 32vw, 124px);
+  }
+
+  body.theme-luka .image.avatar {
+    margin-bottom: 22px;
   }
 
   body.theme-luka .site-name {
