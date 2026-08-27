@@ -312,7 +312,7 @@ body.theme-luka .image.avatar {
   display: block;
   position: relative;
   width: 200px;
-  height: 260px;
+  height: 240px;
   margin: 0 auto 28px;
   overflow: hidden;
   border-radius: 24px;
@@ -1161,7 +1161,7 @@ body.theme-luka summary:focus-visible {
 
   body.theme-luka .image.avatar {
     width: clamp(132px, 38vw, 144px);
-    height: clamp(172px, 49.4vw, 187px);
+    height: clamp(158px, 45.6vw, 173px);
     border-radius: 18px;
     clip-path: inset(0 round 18px);
   }
