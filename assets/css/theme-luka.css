@@ -311,12 +311,12 @@ body.theme-luka .profile-card {
 body.theme-luka .image.avatar {
   display: block;
   position: relative;
-  width: 180px;
-  height: 216px;
+  width: 162px;
+  height: 194.4px;
   margin: 0 auto 28px;
   overflow: hidden;
-  border-radius: 21.6px;
-  clip-path: inset(0 round 21.6px);
+  border-radius: 19.44px;
+  clip-path: inset(0 round 19.44px);
   box-shadow: 0 8px 28px var(--luka-shadow);
 }
 
