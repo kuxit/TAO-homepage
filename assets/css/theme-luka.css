@@ -3,6 +3,14 @@
    Warm minimal academic homepage template
    ============================================ */
 
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/cormorant-garamond-latin-500.woff2") format("woff2");
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -337,7 +345,11 @@ body.theme-luka .image.avatar img {
 body.theme-luka .site-name {
   margin: 0 0 8px;
   color: var(--luka-text);
-  font-size: 28px;
+  font-family: "Cormorant Garamond", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 36px;
+  font-weight: 500;
+  font-kerning: normal;
+  letter-spacing: 0.025em;
   line-height: 1.2;
 }
 
@@ -1330,7 +1342,7 @@ body.theme-luka summary:focus-visible {
   }
 
   body.theme-luka .site-name {
-    font-size: 24px;
+    font-size: 31px;
   }
 
   body.theme-luka .lang-switch {
