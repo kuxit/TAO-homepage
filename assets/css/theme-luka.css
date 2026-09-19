@@ -950,6 +950,15 @@ body.theme-luka .section-body p {
   margin: 0 0 14px;
 }
 
+body.theme-luka .bio-interests {
+  margin: 0 0 18px;
+  padding-left: 1.35em;
+}
+
+body.theme-luka .bio-interests li + li {
+  margin-top: 6px;
+}
+
 body.theme-luka .about-head {
   display: flex;
   align-items: center;
