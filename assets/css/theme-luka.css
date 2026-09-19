@@ -11,6 +11,14 @@
   src: url("../fonts/archivo-black-latin.woff2") format("woff2");
 }
 
+@font-face {
+  font-family: "Noto Serif SC Quotes";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/noto-serif-sc-quotes-500.woff2") format("woff2");
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -539,6 +547,12 @@ body.theme-luka .sidebar-motto .motto-quote {
   color: var(--luka-accent);
 }
 
+body.theme-luka .welcome-note {
+  display: block;
+  margin-top: 6px;
+  font-style: normal;
+}
+
 body.theme-luka .content {
   flex: 1;
   min-width: 0;
@@ -817,6 +831,36 @@ body.theme-luka .photo-viewer-controls {
     padding: 8px;
     width: calc(100vw - 16px);
   }
+}
+
+body.theme-luka .bio-quote {
+  margin: 0 0 24px;
+  padding: clamp(24px, 4vw, 40px);
+  border: 1px solid #c9baa0;
+  background: #f7f3eb;
+  color: #78613e;
+  font-family: "Noto Serif SC Quotes", "Songti SC", "STSong", "SimSun", serif;
+  font-size: clamp(17px, 1.5vw, 20px);
+  font-weight: 500;
+  font-style: normal;
+  line-height: 2;
+  letter-spacing: 0.035em;
+  overflow-wrap: break-word;
+  transition: color var(--luka-motion-base) ease, background-color var(--luka-motion-base) ease, border-color var(--luka-motion-base) ease;
+}
+
+body.theme-luka .bio-quote p {
+  margin: 0;
+}
+
+body.theme-luka .bio-quote p + p {
+  margin-top: 24px;
+}
+
+html[data-theme="dark"] body.theme-luka .bio-quote {
+  background: #232018;
+  color: #ddcda9;
+  border-color: #65563e;
 }
 
 body.theme-luka .chapter-empty {
