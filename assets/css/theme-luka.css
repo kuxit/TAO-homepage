@@ -548,7 +548,7 @@ body.theme-luka .site-panel {
 }
 
 body.theme-luka .chapter-intro {
-  margin-bottom: 42px;
+  margin-bottom: 12px;
 }
 
 body.theme-luka .site-panel .section-title:focus {
@@ -556,22 +556,87 @@ body.theme-luka .site-panel .section-title:focus {
 }
 
 body.theme-luka .chapter-index {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 22px;
-  font-size: 13px;
+  --reading-progress: 0;
+  position: sticky;
+  top: 60px;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding: 14px 0 12px;
+  margin-bottom: 32px;
+  background: var(--luka-bg);
+  border-bottom: 1px solid var(--luka-footer-border);
+  font-size: 12px;
+  transition: background-color var(--luka-motion-base) var(--luka-ease-out);
 }
 
 body.theme-luka .chapter-index a {
-  padding: 6px 0;
+  position: relative;
+  min-height: 44px;
+  box-sizing: border-box;
+  padding: 21px 2px 3px;
+  text-align: center;
   color: var(--luka-secondary);
-  text-decoration: underline;
-  text-decoration-color: var(--luka-border);
-  text-underline-offset: 5px;
+  border-radius: 6px;
+  transition: color var(--luka-motion-fast) ease;
 }
 
-body.theme-luka .chapter-index a:hover {
+body.theme-luka .chapter-index a[aria-current="location"] {
   color: var(--luka-accent);
+  font-weight: 600;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.theme-luka .chapter-index a:hover {
+    color: var(--luka-accent);
+  }
+}
+
+body.theme-luka .reading-track {
+  position: absolute;
+  top: 21px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 2px;
+  background: var(--luka-border);
+  overflow: hidden;
+}
+
+body.theme-luka .reading-fill {
+  display: block;
+  height: 100%;
+  background: var(--luka-accent);
+  transform: scaleX(var(--reading-progress));
+  transform-origin: left;
+}
+
+body.theme-luka .reading-node {
+  position: absolute;
+  top: 3px;
+  left: calc(50% - 5px);
+  width: 10px;
+  height: 10px;
+  box-sizing: border-box;
+  border: 2px solid var(--luka-border);
+  border-radius: 50%;
+  background: var(--luka-bg);
+  transition: background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+}
+
+body.theme-luka .chapter-index a.is-reached .reading-node {
+  background: var(--luka-accent);
+  border-color: var(--luka-accent);
+}
+
+body.theme-luka .chapter-index a[aria-current="location"] .reading-node {
+  box-shadow: 0 0 0 4px var(--luka-accent-soft);
+}
+
+@media (max-width: 640px) {
+  body.theme-luka .chapter-index {
+    top: 56px;
+    font-size: 11px;
+  }
 }
 
 body.theme-luka .chapter-empty {
@@ -651,14 +716,6 @@ body.theme-luka .section-title::after {
   margin-left: 3px;
   background: linear-gradient(to right, var(--luka-border), transparent);
   transition: background var(--luka-motion-base) var(--luka-ease-out);
-}
-
-body.theme-luka .section-index {
-  color: var(--luka-accent);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  font-variant-numeric: tabular-nums;
 }
 
 body.theme-luka .section-label {
@@ -1414,10 +1471,6 @@ body.theme-luka summary:focus-visible {
   body.theme-luka .section-title {
     gap: 8px;
     font-size: 19px;
-  }
-
-  body.theme-luka .section-index {
-    font-size: 10px;
   }
 
   body.theme-luka .project-card,

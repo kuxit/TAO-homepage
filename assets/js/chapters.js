@@ -7,7 +7,13 @@
   const researchAnchors = ['education', 'experience', 'publications', 'awards'];
   const titles = { bio: 'Bio', research: 'Research', projects: 'Projects', arcadia: 'My Arcadia' };
   const rail = document.querySelector('.nav-left');
+  const readingNav = document.querySelector('.chapter-index');
+  const readingTrack = readingNav.querySelector('.reading-track');
+  const readingLinks = Array.from(readingNav.querySelectorAll('a'));
+  const readingSections = researchAnchors.map(function(id) { return document.getElementById(id); });
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let scrollFrame = 0;
+  let readingFrame = 0;
 
   function resolve(hash) {
     const id = hash.replace(/^#/, '');
@@ -22,8 +28,43 @@
     rail.classList.toggle('can-scroll-right', rail.scrollLeft < max - 2);
   }
 
-  function showChapter(moveToContent) {
+  function researchOffset() {
+    return document.querySelector('.top-nav').offsetHeight + readingNav.offsetHeight + 16;
+  }
+
+  function updateReadingProgress() {
+    readingFrame = 0;
+    if (root.dataset.panel !== 'research') return;
+    const y = window.scrollY;
+    const offset = researchOffset();
+    const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    const stops = readingSections.map(function(section) {
+      return Math.max(0, Math.min(maxScroll, section.getBoundingClientRect().top + y - offset));
+    });
+    let current = 0;
+    stops.forEach(function(stop, index) { if (y >= stop - 1) current = index; });
+    const next = Math.min(current + 1, stops.length - 1);
+    const distance = stops[next] - stops[current];
+    const fraction = distance > 0 ? Math.max(0, Math.min(1, (y - stops[current]) / distance)) : 0;
+    const progress = (current + fraction) / (stops.length - 1);
+    readingNav.style.setProperty('--reading-progress', progress.toFixed(4));
+    readingTrack.setAttribute('aria-valuenow', String(Math.round(progress * 100)));
+    readingTrack.setAttribute('aria-valuetext', readingLinks[current].textContent.trim());
+    readingLinks.forEach(function(link, index) {
+      link.classList.toggle('is-reached', index <= current);
+      if (index === current) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+
+  function requestReadingUpdate() {
+    if (root.dataset.panel !== 'research' || readingFrame) return;
+    readingFrame = requestAnimationFrame(updateReadingProgress);
+  }
+
+  function showChapter(moveToContent, smoothAnchor) {
     const route = resolve(location.hash);
+    const sameChapter = root.dataset.panel === route.panel;
     root.dataset.panel = route.panel;
     panels.forEach(function(panel) { panel.hidden = panel.id !== route.panel; });
     links.forEach(function(link) {
@@ -34,6 +75,7 @@
     });
     document.title = titles[route.panel] + ' · Tao Xie';
     updateRail();
+    requestReadingUpdate();
 
     cancelAnimationFrame(scrollFrame);
     if (!moveToContent) return;
@@ -47,9 +89,12 @@
       }
       const navHeight = document.querySelector('.top-nav').getBoundingClientRect().height;
       const inset = window.innerWidth <= 1080 ? 16 : 28;
-      const top = destination.getBoundingClientRect().top + window.scrollY - navHeight - inset;
+      const offset = route.panel === 'research' && route.anchor ? researchOffset() : navHeight + inset;
+      const top = destination.getBoundingClientRect().top + window.scrollY - offset;
       // Change chapters immediately; animate only the incoming content, not a long page scroll.
-      window.scrollTo({ top: Math.max(0, top), behavior: 'instant' });
+      const smooth = smoothAnchor && sameChapter && route.anchor && !reducedMotion.matches;
+      window.scrollTo({ top: Math.max(0, top), behavior: smooth ? 'smooth' : 'instant' });
+      requestReadingUpdate();
     });
   }
 
@@ -66,12 +111,19 @@
     if (!Object.prototype.hasOwnProperty.call(titles, id) && id !== 'about' && !researchAnchors.includes(id)) return;
     event.preventDefault();
     if (location.hash !== link.hash) history.pushState(null, '', link.hash);
-    showChapter(true);
+    showChapter(true, true);
   });
 
   // Hash navigation also covers browser back/forward and links from the previous homepage.
   window.addEventListener('hashchange', function() { showChapter(true); });
   window.addEventListener('resize', updateRail, { passive: true });
+  window.addEventListener('scroll', requestReadingUpdate, { passive: true });
+  window.addEventListener('resize', requestReadingUpdate, { passive: true });
+  window.addEventListener('load', requestReadingUpdate);
+  if ('ResizeObserver' in window) {
+    const readingObserver = new ResizeObserver(requestReadingUpdate);
+    readingObserver.observe(document.getElementById('research'));
+  }
   rail.addEventListener('scroll', updateRail, { passive: true });
   showChapter(Boolean(location.hash));
 })();
