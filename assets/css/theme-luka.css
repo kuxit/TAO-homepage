@@ -4,11 +4,11 @@
    ============================================ */
 
 @font-face {
-  font-family: "Manrope";
+  font-family: "Archivo Black";
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400;
   font-display: swap;
-  src: url("../fonts/manrope-latin-700.woff2") format("woff2");
+  src: url("../fonts/archivo-black-latin.woff2") format("woff2");
 }
 
 html {
@@ -345,12 +345,19 @@ body.theme-luka .image.avatar img {
 body.theme-luka .site-name {
   margin: 0 0 8px;
   color: var(--luka-text);
-  font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Archivo Black", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 32px;
-  font-weight: 700;
+  /* Archivo Black's regular face is already a heavy, purpose-drawn weight. */
+  font-weight: 400;
   font-kerning: normal;
   letter-spacing: -0.025em;
   line-height: 1.2;
+}
+
+body.theme-luka .name-lettering {
+  display: inline-block;
+  transform: scale(1.08, 0.9);
+  transform-origin: center;
 }
 
 body.theme-luka .contact-block {
