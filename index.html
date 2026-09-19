@@ -12,6 +12,10 @@
   <script>
     (function() {
       const root = document.documentElement;
+      const chapter = location.hash.slice(1);
+      const researchAnchors = ['education', 'experience', 'publications', 'awards'];
+      root.dataset.panel = researchAnchors.includes(chapter) ? 'research' :
+        (['research', 'projects', 'arcadia'].includes(chapter) ? chapter : 'bio');
       let savedTheme = null;
       try {
         savedTheme = localStorage.getItem('theme');
@@ -27,19 +31,17 @@
   </script>
 
   <link rel="stylesheet" href="assets/vendor/academicons/css/academicons.min.css">
-  <link rel="stylesheet" href="assets/css/theme-luka.css?v=20260906-smaller-portrait-v2">
+  <link rel="stylesheet" href="assets/css/theme-luka.css?v=20260919-chapters">
 </head>
 <body class="theme-luka">
   <a class="skip-link" href="#main-content">Skip to content</a>
   <nav class="top-nav" aria-label="Primary navigation">
     <div class="nav-container">
       <div class="nav-left">
-        <a href="./" class="nav-brand">Home</a>
-        <a href="#about" class="nav-link is-active" aria-current="location"><span class="nav-label-full">About</span><span class="nav-label-short">About</span></a>
-        <a href="#education" class="nav-link"><span class="nav-label-full">Education</span><span class="nav-label-short">Edu</span></a>
-        <a href="#experience" class="nav-link"><span class="nav-label-full">Experience</span><span class="nav-label-short">Exp</span></a>
-        <a href="#publications" class="nav-link"><span class="nav-label-full">Publications</span><span class="nav-label-short">Pubs</span></a>
-        <a href="#awards" class="nav-link"><span class="nav-label-full">Awards</span><span class="nav-label-short">Awards</span></a>
+        <a href="#bio" class="nav-link"><span>Bio</span></a>
+        <a href="#research" class="nav-link"><span>Research</span></a>
+        <a href="#projects" class="nav-link"><span>Projects</span></a>
+        <a href="#arcadia" class="nav-link"><span>My Arcadia</span></a>
       </div>
       <div class="nav-right">
         <button id="themeToggle" class="theme-toggle" title="Switch to dark theme" aria-label="Dark theme" aria-pressed="false">
@@ -114,10 +116,11 @@
       </div>
     </header>
 
-    <main class="content" id="main-content">
+    <main class="content" id="main-content" tabindex="-1">
+      <section class="site-panel" id="bio" aria-labelledby="bio-title">
       <div class="section" id="about">
         <div class="about-head">
-          <h2 class="section-title"><span class="section-index">01</span><span class="section-label">About Me</span></h2>
+          <h2 class="section-title" id="bio-title" tabindex="-1"><span class="section-index">01</span><span class="section-label">Bio</span></h2>
           <div class="lang-switch" role="group" aria-label="About Me language">
             <button type="button" class="lang-btn is-active" data-lang="en" aria-label="English" aria-pressed="true">EN</button>
             <button type="button" class="lang-btn" data-lang="hans" lang="zh-Hans" aria-label="简体中文" aria-pressed="false">简</button>
@@ -146,8 +149,20 @@
         </div>
       </div>
 
+      </section>
+
+      <section class="site-panel" id="research" aria-labelledby="research-title">
+        <div class="chapter-intro">
+          <h2 class="section-title" id="research-title" tabindex="-1"><span class="section-index">02</span><span class="section-label">Research</span></h2>
+          <nav class="chapter-index" aria-label="Research sections">
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#publications">Publications</a>
+            <a href="#awards">Awards</a>
+          </nav>
+        </div>
       <div class="section" id="education">
-        <h2 class="section-title"><span class="section-index">02</span><span class="section-label">Education</span></h2>
+        <h3 class="section-title"><span class="section-index">01</span><span class="section-label">Education</span></h3>
         <div class="section-body timeline-list">
           <div class="card timeline-entry">
             <div class="experience-item">
@@ -164,7 +179,7 @@
       </div>
 
       <div class="section" id="experience">
-        <h2 class="section-title"><span class="section-index">03</span><span class="section-label">Experience</span></h2>
+        <h3 class="section-title"><span class="section-index">02</span><span class="section-label">Experience</span></h3>
         <div class="section-body timeline-list">
           <div class="card timeline-entry">
             <div class="experience-item">
@@ -181,7 +196,7 @@
       </div>
 
       <div class="section" id="publications">
-        <h2 class="section-title"><span class="section-index">04</span><span class="section-label">Publications</span></h2>
+        <h3 class="section-title"><span class="section-index">03</span><span class="section-label">Publications</span></h3>
         <div class="section-body">
           <div class="publications">
             <ol class="bibliography">
@@ -235,7 +250,7 @@
       </div>
 
       <div class="section" id="awards">
-        <h2 class="section-title"><span class="section-index">05</span><span class="section-label">Awards</span></h2>
+        <h3 class="section-title"><span class="section-index">04</span><span class="section-label">Awards</span></h3>
         <div class="section-body">
           <div class="awards-grid" lang="zh-Hans">
             <div class="award-item">
@@ -253,6 +268,26 @@
           </div>
         </div>
       </div>
+      </section>
+
+      <section class="site-panel" id="projects" aria-labelledby="projects-title">
+        <h2 class="section-title" id="projects-title" tabindex="-1"><span class="section-index">03</span><span class="section-label">Projects</span></h2>
+        <div class="chapter-empty">
+          <p class="chapter-eyebrow">In the making</p>
+          <p class="chapter-lead">A space for projects<br>and experiments.</p>
+          <p>More to come.</p>
+        </div>
+      </section>
+
+      <section class="site-panel arcadia-panel" id="arcadia" aria-labelledby="arcadia-title">
+        <h2 class="section-title" id="arcadia-title" tabindex="-1"><span class="section-index">04</span><span class="section-label">My Arcadia</span></h2>
+        <div class="chapter-empty arcadia-intro">
+          <span class="arcadia-orbit" aria-hidden="true"></span>
+          <p class="chapter-eyebrow">A personal corner · Coming soon</p>
+          <p class="chapter-lead">A little room for life<br>beyond research.</p>
+          <p>Basketball, music, and the things I enjoy.</p>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -261,6 +296,7 @@
   </div>
 
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="assets/js/chapters.js?v=20260919-chapters"></script>
   <script>
     (function() {
       const container = document.getElementById('busuanzi_container_site');
@@ -327,116 +363,6 @@
       if (systemTheme.addEventListener) systemTheme.addEventListener('change', followSystemTheme);
       else if (systemTheme.addListener) systemTheme.addListener(followSystemTheme);
 
-      const navLinks = Array.from(document.querySelectorAll('.nav-link[href^="#"]'));
-      const navRail = document.querySelector('.nav-left');
-      const navSections = navLinks.map(function(link) {
-        return {
-          link: link,
-          section: document.querySelector(link.getAttribute('href'))
-        };
-      }).filter(function(item) {
-        return item.section;
-      });
-
-      let navTicking = false;
-      let activeNavLink = null;
-
-      function updateNavRailFades() {
-        if (!navRail) return;
-        const maxScroll = Math.max(0, navRail.scrollWidth - navRail.clientWidth);
-        navRail.classList.toggle('can-scroll-left', navRail.scrollLeft > 2);
-        navRail.classList.toggle('can-scroll-right', navRail.scrollLeft < maxScroll - 2);
-      }
-
-      function revealActiveNav(link) {
-        if (!navRail || window.innerWidth > 640) return;
-        const inset = 8;
-        const railRect = navRail.getBoundingClientRect();
-        const linkRect = link.getBoundingClientRect();
-        const leftEdge = railRect.left + inset;
-        const rightEdge = railRect.right - inset;
-        let target = navRail.scrollLeft;
-
-        if (link === navLinks[0]) target = 0;
-        else if (linkRect.left < leftEdge) target += linkRect.left - leftEdge;
-        else if (linkRect.right > rightEdge) target += linkRect.right - rightEdge;
-        else return;
-
-        target = Math.max(0, target);
-
-        if (typeof navRail.scrollTo === 'function') {
-          navRail.scrollTo({
-            left: target,
-            behavior: reducedMotion.matches ? 'auto' : 'smooth'
-          });
-        } else {
-          navRail.scrollLeft = target;
-        }
-      }
-
-      function updateActiveNav() {
-        if (!navSections.length) return;
-        const marker = window.scrollY + Math.max(110, window.innerHeight * 0.28);
-        let active = navSections[0];
-        navSections.forEach(function(item) {
-          if (item.section.offsetTop <= marker) active = item;
-        });
-        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8) {
-          active = navSections[navSections.length - 1];
-        }
-        navSections.forEach(function(item) {
-          const isActive = item === active;
-          item.link.classList.toggle('is-active', isActive);
-          if (isActive) item.link.setAttribute('aria-current', 'location');
-          else item.link.removeAttribute('aria-current');
-        });
-        if (active.link !== activeNavLink) {
-          activeNavLink = active.link;
-          revealActiveNav(activeNavLink);
-        }
-        updateNavRailFades();
-        navTicking = false;
-      }
-
-      function requestNavUpdate() {
-        if (navTicking) return;
-        navTicking = true;
-        window.requestAnimationFrame(updateActiveNav);
-      }
-
-      window.addEventListener('scroll', requestNavUpdate, { passive: true });
-      window.addEventListener('resize', function() {
-        requestNavUpdate();
-        updateNavRailFades();
-      });
-      if (navRail) navRail.addEventListener('scroll', updateNavRailFades, { passive: true });
-      updateActiveNav();
-
-      const sections = Array.from(document.querySelectorAll('.section'));
-      if ('IntersectionObserver' in window && !reducedMotion.matches) {
-        sections.forEach(function(section) {
-          if (section.getBoundingClientRect().top < window.innerHeight * 0.92) {
-            section.classList.add('visible');
-          }
-        });
-        root.classList.add('reveal-ready');
-        const observer = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.1 });
-
-        sections.forEach(function(section) {
-          if (!section.classList.contains('visible')) observer.observe(section);
-        });
-      } else {
-        sections.forEach(function(section) {
-          section.classList.add('visible');
-        });
-      }
     })();
 
     (function() {
