@@ -32,7 +32,7 @@
 
   <link rel="stylesheet" href="assets/vendor/academicons/css/academicons.min.css">
   <link rel="preload" href="assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/theme-luka.css?v=20260919-solid-name">
+  <link rel="stylesheet" href="assets/css/theme-luka.css?v=20260919-conference-moments">
 </head>
 <body class="theme-luka">
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -150,6 +150,25 @@
         </div>
       </div>
 
+      <section class="section conference-moments" aria-labelledby="conference-title">
+        <h2 class="section-title" id="conference-title"><span class="section-label">Conference Moments</span></h2>
+        <div class="conference-grid">
+          <figure class="conference-photo">
+            <span class="photo-pin" aria-hidden="true"></span>
+            <a class="conference-photo-link" href="assets/img/conferences/bibm-2025-full.webp" target="_blank" rel="noopener" aria-label="View BIBM ’25 photo in full size" data-caption="BIBM ’25" data-width="2275" data-height="1279">
+              <img src="assets/img/conferences/bibm-2025-thumb.webp" alt="Tao Xie at the IEEE BIBM 2025 conference display" width="1200" height="675" loading="lazy" decoding="async">
+            </a>
+            <figcaption>BIBM ’25</figcaption>
+          </figure>
+          <figure class="conference-photo">
+            <span class="photo-pin" aria-hidden="true"></span>
+            <a class="conference-photo-link" href="assets/img/conferences/kdd-2026-full.webp" target="_blank" rel="noopener" aria-label="View KDD ’26 photo in full size" data-caption="KDD ’26" data-width="1800" data-height="2400">
+              <img src="assets/img/conferences/kdd-2026-thumb.webp" alt="Tao Xie beside the AnchorMoE poster at KDD 2026" width="900" height="1200" loading="lazy" decoding="async">
+            </a>
+            <figcaption>KDD ’26</figcaption>
+          </figure>
+        </div>
+      </section>
       </section>
 
       <section class="site-panel" id="research" aria-labelledby="research-title">
@@ -295,6 +314,19 @@
     </footer>
   </div>
 
+  <dialog class="photo-viewer" aria-labelledby="photo-viewer-caption">
+    <div class="photo-viewer-toolbar">
+      <p id="photo-viewer-caption" aria-live="polite"></p>
+      <button type="button" class="photo-viewer-close" aria-label="Close photo viewer" autofocus>×</button>
+    </div>
+    <img class="photo-viewer-image" alt="">
+    <div class="photo-viewer-controls">
+      <button type="button" class="photo-viewer-prev" aria-label="Previous photo">←</button>
+      <span class="photo-viewer-count" aria-hidden="true"></span>
+      <button type="button" class="photo-viewer-next" aria-label="Next photo">→</button>
+    </div>
+  </dialog>
+  <script src="assets/js/conference-gallery.js?v=20260919-conference-moments"></script>
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <script src="assets/js/chapters.js?v=20260919-reading-progress"></script>
   <script>
