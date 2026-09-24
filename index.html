@@ -12,6 +12,7 @@
   <script>
     (function() {
       const root = document.documentElement;
+      root.classList.add('js');
       const chapter = location.hash.slice(1);
       const researchAnchors = ['education', 'experience', 'publications', 'awards'];
       root.dataset.panel = researchAnchors.includes(chapter) ? 'research' :
@@ -32,7 +33,7 @@
 
   <link rel="stylesheet" href="assets/vendor/academicons/css/academicons.min.css">
   <link rel="preload" href="assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/theme-luka.css?v=20260925-official-logos">
+  <link rel="stylesheet" href="assets/css/theme-luka.css?v=20260925-visitor-map">
 </head>
 <body class="theme-luka">
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -104,6 +105,16 @@
         </div>
 
         <p class="sidebar-motto"><span class="motto-quote" lang="zh-Hans">「路漫漫其修远兮，吾将上下而求索。」</span><span class="welcome-note" lang="en">Welcome to my page. I'll be updating it from time to time.</span></p>
+
+        <section class="visitor-map" aria-labelledby="visitor-map-title">
+          <h2 id="visitor-map-title">Around the world</h2>
+          <div class="visitor-map-canvas" id="visitor-map-canvas">
+            <p class="visitor-map-status" role="status">Loading visitor map…</p>
+          </div>
+          <noscript><p class="visitor-map-nojs">Enable JavaScript to see the visitor map.</p></noscript>
+          <p class="visitor-map-caption">Approximate visitor locations</p>
+          <p class="visitor-map-links"><a href="https://www.supercounters.com/stats/1738914" target="_blank" rel="noopener">Map &amp; stats</a><span aria-hidden="true"> · </span><a href="https://www.supercounters.com/privacy" target="_blank" rel="noopener" title="Supercounters uses IP addresses to estimate visitor regions">Privacy</a></p>
+        </section>
       </div>
     </header>
 
@@ -350,6 +361,7 @@
   <script src="assets/js/conference-gallery.js?v=20260919-conference-moments"></script>
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <script src="assets/js/chapters.js?v=20260919-reading-progress"></script>
+  <script defer src="assets/js/visitor-map.js?v=20260925-visitor-map"></script>
   <script>
     (function() {
       const container = document.getElementById('busuanzi_container_site');

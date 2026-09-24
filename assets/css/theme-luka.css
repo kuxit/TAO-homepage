@@ -488,6 +488,70 @@ body.theme-luka .welcome-note {
   font-style: normal;
 }
 
+body.theme-luka .visitor-map {
+  width: 240px;
+  max-width: 100%;
+  margin: 24px auto 28px;
+  padding-top: 16px;
+  border-top: 1px solid var(--luka-footer-border);
+  text-align: center;
+}
+
+body.theme-luka .visitor-map h2 {
+  margin: 0 0 10px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--luka-secondary);
+}
+
+body.theme-luka .visitor-map-canvas {
+  position: relative;
+  width: 210px;
+  height: 105px;
+  margin: 0 auto;
+  line-height: 0;
+}
+
+body.theme-luka .visitor-map-status {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 12px;
+  color: var(--luka-secondary);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+body.theme-luka .visitor-map-status[hidden] {
+  display: none;
+}
+
+body.theme-luka .visitor-map-caption,
+body.theme-luka .visitor-map-nojs {
+  margin: 8px 0 0;
+  color: var(--luka-secondary);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+body.theme-luka .visitor-map-links {
+  margin: 2px 0 0;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+body.theme-luka .visitor-map-links a {
+  color: var(--luka-secondary);
+}
+
+html:not(.js) body.theme-luka .visitor-map-canvas {
+  display: none;
+}
+
 body.theme-luka .content {
   flex: 1;
   min-width: 0;
